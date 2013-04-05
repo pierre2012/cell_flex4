@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}project detail{% endblock %}
+
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+{% if person_data %}
+<div class="row">
+    <div class="span12">	<div class="well">
+	 {% if person_data.image %}<img class="pull-left" src="{{person_data.image.url}}"><br><br>{% endif %}
+
+
+	<h4>{{person_data.name}}</h4>
+
+	<p>
+	{{person_data.short_bio}}	
+	</p>
+   
+</div>
+</div>
+</div>
+{% else %}
+    <p>No records are available.</p>
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

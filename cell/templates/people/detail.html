@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}project detail{% endblock %}
+
+
+{% block page_header %}
+{% endblock %}
+
+{% block content %}
+
+
+
+
+{% if person_data %}
+<div class="row">
+   
+	<div class="well">
+	<p>
+	
+		<div class="row">
+	
+	  {% if person_data.image %}<div class="span1"><img class="img-rounded pull-left" src="{{person_data.image.url}}"></div>{% endif %}
+  
+	  <div class="span7"><h4 class="heading"><a href="/people/{{person_data.id}}/">{{person_data.name}}</a></h4>
+	  {% if person_data.short_bio %}<p class="small"><span class="muted">{{person_data.short_bio}}</span></p>{% endif %}
+	  
+	  <!-- {% if person.address %}<p class="lead">Contact: <span class="muted">{{person.address}}</span></p>{% endif %} -->
+	  {% if person_data.publications_name %}<p class="small"><a href="/publications/{{person_data.publications_name}}/">Publications</a></p>{% endif %}
+	  
+	</div></div>
+	</p>
+	</div>
+ 
+</div>
+{% else %}
+    <p>No records are available.</p>
+{% endif %}
+
+
+
+
+
+
+
+
+
+{% endblock %}

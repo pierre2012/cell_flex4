@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %} Publications{% endblock %}
+
+{% block page_header %} Publications{% endblock %}
+
+{% block js_headers %}
+	{{ block.super }}
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="?rss" />
+{% endblock %}
+
+{% block content %}
+
+{% if years %}
+
+
+<h4>Years</h4>
+
+<div class="btn-group">
+    <button class="btn"><a href="/publications/year/2013">2013</a></button>
+    <button class="btn"><a href="/publications/year/2012">2012</a></button>
+    <button class="btn"><a href="/publications/year/2011">2011</a></button>
+    <button class="btn"><a href="/publications/year/2010">2010</a></button>
+    <button class="btn"><a href="/publications/year/2009">2009</a></button>
+    <button class="btn"><a href="/publications/year/2008">2008</a></button>
+    <button class="btn"><a href="/publications/year/2007">2007</a></button>
+    <button class="btn"><a href="/publications/year/2006">2006</a></button>
+    <button class="btn"><a href="/publications/year/2005">2005</a></button>
+    <button class="btn"><a href="/publications/year/2004">2004</a></button>
+    <button class="btn"><a href="/publications/year/2003">2003</a></button>
+    <button class="btn"><a href="/publications/year/2002">2002</a></button>
+    <button class="btn"><a href="/publications/year/2001">2001</a></button>
+    <button class="btn"><a href="/publications/year/2000">2000</a></button>
+    <button class="btn"><a href="/publications/year/older/">Older</a></button>
+</div>
+
+{% endif %}
+
+<!-- <div class="btn-group">
+  <button class="btn"><a href="#faculty">Faculty</a></button>
+  <button class="btn"><a href="#postdoc">Post Doc</a></button>
+  <button class="btn"><a href="#grad">Graduate</a></button>
+  <button class="btn"><a href="#undergrad">Undergraduate</a></button>
+  <button class="btn"><a href="#collab">Collaborator</a></button>
+  <button class="btn"><a href="#alumni">Alumni</a></button>		  
+</div> -->
+
+<!-- <table cellspacing="5"><tbody><tr><th bgcolor="#0000ff"><font color="#ffffff">BM</font></th><td><a href="/publications/tag/biomedical+imaging/">Biomedical</a></td><td>&nbsp;&nbsp;</td>
+<th bgcolor="#ff8800"><font color="#000000">DoD</font></th><td><a href="/publications/tag/contour+imaging/">Department of Defense</a></td></tr> -->
+<!-- <tr><th bgcolor="#008800"><font color="#ffffff">CGT</font></th><td><a href="papers.cgi?topic=2">Computational Game Theory</a></td><td>&nbsp;&nbsp;</td>
+<th bgcolor="#00ff88"><font color="#000000">DM</font></th><td><a href="papers.cgi?topic=3">Decision Making</a></td></tr>
+<tr><th bgcolor="#000088"><font color="#ffffff">HM</font></th><td><a href="papers.cgi?topic=4">Hybrid Models</a></td><td>&nbsp;&nbsp;</td>
+<th bgcolor="#ff0000"><font color="#ffffff">LTW</font></th><td><a href="papers.cgi?topic=5">Language and Web</a></td></tr>
+<tr><th bgcolor="#ffff00"><font color="#000000">LGM</font></th><td><a href="papers.cgi?topic=6">Learning Graphical Models</a></td><td>&nbsp;&nbsp;</td>
+<th bgcolor="#0088ff"><font color="#000000">PL</font></th><td><a href="papers.cgi?topic=7">Logic and Probabilistic Logic</a></td></tr>
+<tr><th bgcolor="#ff00ff"><font color="#000000">MN</font></th><td><a href="papers.cgi?topic=8">Markov Networks</a></td><td>&nbsp;&nbsp;</td>
+<th bgcolor="#ff0088"><font color="#000000">RPM</font></th><td><a href="papers.cgi?topic=10">Richer Probabilistic Models</a></td></tr>
+<tr><th bgcolor="#00ff00"><font color="#ffffff">RP</font></th><td><a href="papers.cgi?topic=11">Robotics and Perception</a></td><td>&nbsp;&nbsp;</td>
+<th bgcolor="#88ff00"><font color="#000000">SL</font></th><td><a href="papers.cgi?topic=12">Supervised Learning</a></td></tr>
+<tr><th bgcolor="#00ffff"><font color="#000000">TPM</font></th><td><a href="papers.cgi?topic=13">Temporal Probabilistic Models</a></td><td>&nbsp;&nbsp;</td>
+<th bgcolor="#008888"><font color="#ffffff">TCS</font></th><td><a href="papers.cgi?topic=14">Theoretical Computer Science</a></td></tr> -->
+<!-- </tbody></table> -->
+<br><br>
+
+	<div class="special_links">
+		<a href="?ascii">plain text</a>, 
+		<a href="?bibtex">BibTex</a>
+	</div>
+	
+	{% for year, publications in years %}
+		<a href="/publications/year/{{ year }}/"><h1>{{ year }}</h1></a>
+		<hr/>
+		<div{% if not forloop.last %} style="margin-bottom: 30px;"{% endif %}>
+		
+		{% for publication in publications %}
+			<div{% if not forloop.last %} style="margin-bottom: 20px;"{% endif %}>
+			
+				{% include "publications/publication.html" %}
+			
+			</div>
+		{% endfor %}
+		
+		</div>
+	{% endfor %}
+	
+	
+	{% if author %}
+		<h1>Publications by &quot;{{ author }}&quot;</h1>
+		<hr/>
+		{% for publication in publications %}
+			<div{% if not forloop.last %} style="margin-bottom: 20px;"{% endif %}>
+				{% include "publications/publication.html" %}
+			</div>
+		{% endfor %}
+
+	{% endif %}
+	
+	{% if keyword %}
+		<h1>Publications with the keyword &quot;{{ keyword }}&quot;</h1>
+		<hr/>
+		{% for publication in publications %}
+			<div{% if not forloop.last %} style="margin-bottom: 20px;"{% endif %}>
+				{% include "publications/publication.html" %}
+			</div>
+		{% endfor %}
+		
+	{% endif %}
+	
+	
+	
+	
+	
+{% endblock %}

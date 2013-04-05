@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Software{% endblock %}
+
+{% block page_header %}About us{% endblock %}
+
+
+{% block content %}
+
+<br><br>
+<div class="btn-group">
+  <button class="btn"><a href="#code">Code</a></button>
+  <button class="btn"><a href="#software">Software</a></button>
+  <button class="btn"><a href="#presentations">Presentations</a></button>
+  <button class="btn"><a href="#data">Data</a></button>
+  <button class="btn"><a href="#links">Links</a></button>
+</div>
+
+<p>
+	<h2><a href="/software/kolam">Kolam</a></h2>
+	<hr class="featurette-divider">
+	<div class="well">
+		<img src="/media/kolam1.png" class="img-rounded">
+		<br><br>
+	<p>Kolam is a tool to visualize large datasets, notably biomedical and geospatial imagery.</p>
+</div>
+
+	<h2><a href="/software/firefly">Firefly</a></h2>
+	<hr class="featurette-divider">
+	<div class="well">
+		<img src="/media/firefly1.png" class="img-rounded">
+		<br><br>
+	<p>Firefly is a web based tool for image analysis, tracking, and segmentation.  It supports different annotation types such as point, lines, polygones, and ploylines.  It interacts with a database on a webserver to provide an interactive platform for visualizing and editing tracking data.</p>
+</div>
+	
+</p>
+
+
+{% endblock %}

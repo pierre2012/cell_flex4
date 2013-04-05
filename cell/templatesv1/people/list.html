@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %} Projects{% endblock %}
+
+{% block page_header %} Projects{% endblock %}
+
+{% block js_headers %}
+
+
+<style>
+.sidebar-nav-fixed {
+     position:fixed;
+     top:60px;
+     width:12%;
+ }
+
+ @media (max-width: 767px) {
+     .sidebar-nav-fixed {
+         width:auto;
+     }
+ }
+
+ @media (max-width: 979px) {
+     .sidebar-nav-fixed {
+         position:static;
+        width: auto;
+     }
+ }
+</style>
+
+
+<script type="text/javascript">
+$(function() {
+    $(".nav li").click(function() {
+        $(".nav li").removeClass('active');
+        setTimeout(function() {
+            var page = $.QueryString("page");
+            $(".nav li:eq(" + page + ")").addClass("active");
+        }, 50);
+ 
+    });
+});
+                
+                           
+         </script>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+	<div class="row">
+	<div class="span3">
+	<div class="well sidebar-nav sidebar-nav-fixed">
+	 
+	<ul class="nav nav-list">
+	<li class="nav-header">People</li>
+	<li class="active"><a href="#faculty">Faculty</a></li>
+	<li><a href="#postdoc">Post Doc</a></li>
+	<li><a href="#grad">Graduate</a></li>
+	<li><a href="#undergrad">Undergraduate</a></li>
+	<li><a href="#collab">Collaborator</a></li>
+	<li><a href="#alumni">Alumni</a></li>
+	</ul>
+		
+	</div>
+	</div>
+	
+	
+	
+	<div class="span9">
+
+
+
+
+	<div id="faculty">
+	<h2>Faculty</h2>
+	<hr class="featurette-divider">
+
+{% for person in faculty_data %}
+
+		
+<div class="well">
+<p>
+  {% if person.image %}<img class="featurette-image pull-left" src="{{person.image.url}}">{% endif %}
+  <h3 class="featurette-heading"><a href="/people/{{person.id}}/">{{person.name}}</a></h3>
+  {% if person.short_bio %}<p class="lead"><span class="muted">{{person.short_bio}}</span></p>{% endif %}
+	  
+  <!-- {% if person.address %}<p class="lead">Contact: <span class="muted">{{person.address}}</span></p>{% endif %} -->
+  {% if person.research_interests %}<p class="lead"><a href="http://cell.skoonce.com/publications/{{person.research_interests}}/">Publications</a></p>{% endif %}
+	  
+		  
+</p>
+</div>
+
+    
+{% endfor %}
+</div>
+
+
+
+<div id="postdoc">
+<h2>Post Doc</h2>
+<hr class="featurette-divider">
+
+
+{% for person in postdoc_data %}
+		
+<div class="well">
+<p>
+  {% if person.image %}<img class="featurette-image pull-left" src="{{person.image.url}}">{% endif %}
+  <h3 class="featurette-heading"><a href="/people/{{person.id}}/">{{person.name}}</a></h3>
+  {% if person.short_bio %}<p class="lead"><span class="muted">{{person.short_bio}}</span></p>{% endif %}
+	  
+  <!-- {% if person.address %}<p class="lead">Contact: <span class="muted">{{person.address}}</span></p>{% endif %} -->
+  {% if person.research_interests %}<p class="lead"><a href="http://cell.skoonce.com/publications/{{person.research_interests}}/">Publications</a></p>{% endif %}
+	  
+		  
+</p>
+</div>
+
+
+
+    
+{% endfor %}
+
+</div>
+
+
+
+
+<div id="grad">
+<h2>Graduate Students</h2>
+<hr class="featurette-divider">
+
+
+{% for person in grad_data %}
+
+<div class="well">
+<p>
+  {% if person.image %}<img class="featurette-image pull-left" src="{{person.image.url}}">{% endif %}
+  <h3 class="featurette-heading"><a href="/people/{{person.id}}/">{{person.name}}</a></h3>
+  {% if person.short_bio %}<p class="lead"><span class="muted">{{person.short_bio}}</span></p>{% endif %}
+	  
+  <!-- {% if person.address %}<p class="lead">Contact: <span class="muted">{{person.address}}</span></p>{% endif %} -->
+  {% if person.research_interests %}<p class="lead"><a href="http://cell.skoonce.com/publications/{{person.research_interests}}/">Publications</a></p>{% endif %}
+	  
+		  
+</p>
+</div>
+
+    
+{% endfor %}
+
+</div>
+
+
+
+
+   
+    </div>
+
+  </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% load publication_extras %}
+<div class="well">
+	
+	<div class="row">
+	
+    {% if publication.image %}<div class="span2"><img class="img-rounded pull-left" src="{{publication.image.url}}"></div>{% endif %}
+	
+	<div class="span9">
+		<b>
+{% for author, author_escaped in publication.authors_escaped %}
+<a href="/publications/{{ author_escaped }}/" class="author">{{ author }}</a>{% if not forloop.last %}{% if forloop.revcounter == 2 %}{% if not forloop.first %},{% endif %} and {% else %}, {% endif %}{% endif %}
+{% endfor %}</b>
+<br />
+<h4><a href="/publications/{{ publication.pk }}/" class="small">{{ publication.title|tex_parse }}</a></h4>
+
+
+<p style="color: #000099;">
+
+{% if publication.journal %}
+	<i>{{ publication.journal }},
+		{% if publication.volume %}Volume {{publication.volume}},{% endif %}
+		{% if publication.pages %}pgs. {{publication.pages}},{% endif %}
+		
+		 {{ publication.year }}</i><br />
+{% else %}
+	<i>{% if publication.book_title %}{{ publication.book_title }},{% endif %}
+	{% if publication.publisher %}{{ publication.publisher }},{% endif %}
+	{% if publication.volume %}Volume {{publication.volume}},{% endif %}
+	{% if publication.pages %}pgs. {{publication.pages}},{% endif %}
+	
+	{{ publication.year }}</i><br/>
+{% endif %}
+
+{% if publication.keywords %}
+	{% for keyword, keyword_escaped in publication.keywords_escaped %}
+	
+	{% ifequal keyword 'biomedical imaging' %}
+	<!-- <table cellspacing="5"><tbody><tr><th bgcolor="#0000ff"><font color="#ffffff">BM</font></th><td><a href="/publications/tag/biomedical+imaging/">Biomedical</a></td></tbody></table> -->
+		
+		
+		
+		
+		{% else %}
+		<h5><a class="keyword" href="/publications/tag/{{ keyword_escaped }}/">{{ keyword }}</a></h5>
+		{% endifequal %}
+	{% endfor %}
+	<br />
+{% endif %}
+
+</p>
+
+{% if publication.code %}<a class="link" href="{{ publication.code }}">Code</a>,{% endif %}
+{% if publication.url %}<a class="link" rel="external" href="{{ publication.url }}">URL</a>,{% endif %}
+{% if publication.pdf %}<a class="link" href="{{ MEDIA_URL }}{{ publication.pdf }}">PDF</a>,{% endif %}
+{% if publication.doi %}<a class="link" rel="external" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>,{% endif %}
+<a href="/publications/{{ publication.pk }}/?bibtex">BibTex</a>
+</div> </div>
+<!-- {% if publication.abstract %}<br><br><p>{{publication.abstract}}</p>{% endif %} -->

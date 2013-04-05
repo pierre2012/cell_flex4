@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %} People{% endblock %}
+
+{% block page_header %} People{% endblock %}
+
+{% block js_headers %}
+
+
+<style>
+.sidebar-nav-fixed {
+     position:fixed;
+     top:60px;
+     width:12%;
+ }
+
+ @media (max-width: 767px) {
+     .sidebar-nav-fixed {
+         width:auto;
+     }
+ }
+
+ @media (max-width: 979px) {
+     .sidebar-nav-fixed {
+         position:static;
+        width: auto;
+     }
+ }
+</style>
+
+
+<script type="text/javascript">
+$(function() {
+    $(".nav li").click(function() {
+        $(".nav li").removeClass('active');
+        setTimeout(function() {
+            var page = $.QueryString("page");
+            $(".nav li:eq(" + page + ")").addClass("active");
+        }, 50);
+ 
+    });
+});
+                
+                           
+         </script>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+	<div class="row">
+	<!-- <div class="span3">
+	<div class="well sidebar-nav sidebar-nav-fixed">
+	 
+	<ul class="nav nav-list">
+	<li class="nav-header">People</li>
+	<li><a href="#faculty">Faculty</a></li>
+	<li><a href="#postdoc">Post Doc</a></li>
+	<li><a href="#grad">Graduate</a></li>
+	<li><a href="#undergrad">Undergraduate</a></li>
+	<li><a href="#collab">Collaborator</a></li>
+	<li><a href="#alumni">Alumni</a></li>
+	</ul>
+		
+	</div>
+	</div> -->
+	
+	
+	
+	<div class="span12">
+		<br><br>
+		<div class="btn-group">
+  		  <button class="btn"><a href="#faculty">Faculty</a></button>
+		  <button class="btn"><a href="#postdoc">Post Doc</a></button>
+		  <button class="btn"><a href="#grad">Graduate</a></button>
+		  <button class="btn"><a href="#undergrad">Undergraduate</a></button>
+		  <button class="btn"><a href="#collab">Collaborator</a></button>
+		  <button class="btn"><a href="#alumni">Alumni</a></button>		  
+		</div>
+
+
+
+	<div id="faculty">
+		<h2></h2>
+		
+	<hr class="featurette-divider">
+
+{% for person in faculty_data %}
+
+{% include "people/person.html" %}
+
+{% endfor %}
+</div>
+
+
+
+<div id="postdoc">
+<h2></h2>
+<hr class="featurette-divider">
+
+
+{% for person in postdoc_data %}
+
+{% include "people/person.html" %}
+    
+{% endfor %}
+
+</div>
+
+
+
+
+<div id="grad">
+<h2></h2>
+<hr class="featurette-divider">
+
+
+{% for person in grad_data %}
+
+{% include "people/person.html" %}
+    
+{% endfor %}
+
+</div>
+
+
+
+
+<div id="undergrad">
+<h2></h2>
+<hr class="featurette-divider">
+
+
+{% for person in under_data %}
+
+{% include "people/person.html" %}
+    
+{% endfor %}
+
+</div>
+
+
+
+<div id="collab">
+<h2></h2>
+<hr class="featurette-divider">
+
+
+{% for person in collab_data %}
+
+{% include "people/person.html" %}
+
+{% endfor %}
+
+</div>
+
+
+
+<div id="alumni">
+<h2></h2>
+<hr class="featurette-divider">
+
+
+{% for person in alumni_data %}
+
+{% include "people/person.html" %}
+
+{% endfor %}
+
+</div>
+
+
+
+
+
+   
+    </div>
+
+  </div>
+
+
+
+
+
+{% endblock %}

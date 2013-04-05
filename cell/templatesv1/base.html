@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<title>Computational Imaging and VisAnalysis - {% block title %}BASENAME{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+	<!-- <link href="http://static.zephyrcharts.com/static_bs/css/bootstrap.css" rel="stylesheet"> -->
+	<link href="http://static.zephyrcharts.com/static_bs/css/bootstrap-responsive.css" rel="stylesheet">
+	
+	<link href="http://bootswatch.com/cerulean/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- try: journal amelia spruce superhero slate-->
+	
+    <style>
+	
+		body 
+		{
+			padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+		}
+        
+    </style>
+	<!-- try: journal amelia spruce superhero slate-->
+
+<!-- begin css/js includes -->
+
+{% block js_headers %}{% endblock %}
+
+<!-- end css/js includes -->
+
+<!-- begin analytics -->
+
+<!-- end analytics -->
+
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"></a> <a class="brand" href="/">Computational Imaging and VisAnalysis (CIVA)
+			</a>
+			<div class="nav-collapse">
+				<ul class="nav">
+
+					
+				</ul>
+				<ul class="nav pull-right">
+
+					<li>
+						<a href="/people/">People</a>
+					</li>
+					<!-- <li>
+						<a href="/research">Research</a>
+					</li> -->
+					
+					<li>
+						<a href="/publications/">Publications</a>
+					</li>
+					<li>
+						<a href="/software">Software</a>
+					</li>
+					<li>
+						<a href="/about">Contact</a>
+					</li>
+					
+				</ul>
+				<!-- <form class="navbar-search pull-right">
+					<input type="text" class="search-query" placeholder="Search">
+				</form>-->
+			</div><!-- /.nav-collapse -->
+		</div><!-- /.container -->
+	</div><!-- /.navbar-inner -->
+</div><!-- /.navbar -->
+
+
+
+	<div class="container marketing">
+		{% block content %} {% endblock %}
+	</div>	
+	
+	
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="http://static.quarkworks.webfactional.com/js/jquery-1.7.2.min.js"></script>
+<script src="http://static.quarkworks.webfactional.com/js/bootstrap-custom.min.js"></script>
+<script>
+  $(document).ready(function(){
+
+    $('.carousel').carousel();
+
+  }); // end document.ready
+</script>
+
+</body>
+</html>

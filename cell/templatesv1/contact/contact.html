@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}contact{% endblock %}
+
+{% block page_header %}Contact{% endblock %}
+
+{% block content %}
+
+<p>
+Interested in development work?<br>
+Send away!  We respond to all enquiries quickly.
+<br><br>
+
+<form action="." method="POST">{% csrf_token %}
+<table>
+{{ form.as_table }}
+</table>
+<p><input type="submit" value="Submit"></p>
+</form>
+
+</p>
+
+
+
+{% endblock %}

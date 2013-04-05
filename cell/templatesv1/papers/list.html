@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %} Projects{% endblock %}
+
+{% block page_header %} Projects{% endblock %}
+
+
+{% block content %}
+
+{% if people_data %}
+
+	<h4>
+	<p>
+    {% for person in people_data %}
+		
+        <div class="featurette">
+          <img class="featurette-image pull-left" src={{person.image}}>
+          <h2 class="featurette-heading"><a href="/papers/{{person.id}}/">{{person.name}}</a> </h2>
+			 <h4> <span class="muted">{{person.authors}}</span>
+				  <span class="muted">{{person.publication}}</span>
+				   <span class="muted">{{person.location}}</span>
+				    <span class="muted">{{person.extra_info}}</span>
+				 <span class="muted">{{person.link}}</span>
+					 
+			 </h4>
+				 <br><br>
+				 
+			  <h5><span class="muted">{{person.abstract}}</span></h5>
+			  
+          <p class="lead">{{person.short_bio}}</p>
+          <hr class="featurette-divider">
+		  
+        </div>
+    
+    {% endfor %}
+	</p>
+</h4>
+
+{% else %}
+    <p>No records are available.</p>
+{% endif %}
+
+
+{% endblock %}
