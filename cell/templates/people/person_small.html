@@ -1,0 +1,48 @@
+{% if person %}
+
+<div class="well">
+<p>
+	
+	<div class="row">
+	
+  {% if person.image %}<div class="span2"><img class="img-rounded pull-left" src="{{person.image.url}}"></div>{% endif %}
+  
+  <div class="span9"><h4 class="heading"><a href="/people/{{person.id}}/">{{person.name}}</a></h4>
+	  
+
+
+<p class="small">
+	{% if person.publications_name %}<a href="/publications/{{person.publications_name}}/">Publications</a>{% endif %}
+
+
+  	{% if person.email %}<span style="color: #000099;"><a href="mailto:{{person.email}}">Email</a></span>{% endif %}
+	
+	{% if person.phone %}<span>{{person.phone}}</span>{% endif %}
+	
+	
+  	</p>
+	
+  <p class="small"><span>
+	  {% ifequal person.member_type 0 %}<p class="small"><h5>Faculty</h5></p>{% endifequal %}	  
+	  {% ifequal person.member_type 1 %}<p class="small"><h5>Post Doc</h5></p>{% endifequal %}	  
+	  {% ifequal person.member_type 2 %}<p class="small"><h5>Graduate</h5></p>{% endifequal %}	  
+	  {% ifequal person.member_type 3 %}<p class="small"><h5>Undergraduate</h5></p>{% endifequal %}	  
+	  {% ifequal person.member_type 4 %}<p class="small"><h5>Collaborator</h5></p>{% endifequal %}	  
+	  {% ifequal person.member_type 5 %}<p class="small"><h5>Alumni</h5></p>{% endifequal %}	  
+	  {% ifequal person.member_type 6 %}<p class="small"><h5>Postdoc Alumni</h5></p>{% endifequal %}	  
+	  {% ifequal person.member_type 7 %}<p class="small"><h5>Undergraduate Alumni</h5></p>{% endifequal %}	  
+	  {% ifequal person.member_type 8 %}<p class="small"><h5>Graduate Alumni</h5></p>{% endifequal %}	  
+  </span></p>
+  	  
+	{% if person.short_bio %}<p class="small"><span>{{person.short_bio}}</span></p>{% endif %}
+
+	<!-- {% if person.address %}<p class="lead">Contact: <span class="muted">{{person.address}}</span></p>{% endif %} -->
+  
+	</div>
+	</div>
+
+</p>
+</div>
+
+{% else %}
+{% endif %}

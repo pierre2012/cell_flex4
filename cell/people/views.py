@@ -20,10 +20,14 @@ def people(request):
 	under_data = Person.objects.filter(member_type=3).order_by('sortorder')
 	collab_data = Person.objects.filter(member_type=4).order_by('sortorder')
 	alumni_data = Person.objects.filter(member_type=5).order_by('sortorder')
+	postdoc_alumni_data = Person.objects.filter(member_type=6).order_by('sortorder')
+	undergrad_alumni_data = Person.objects.filter(member_type=7).order_by('sortorder')
+	graduate_alumni_data = Person.objects.filter(member_type=8).order_by('sortorder')
 		
 	return render_to_response('people/list.html', {'faculty_data': faculty_data,'postdoc_data': postdoc_data,
                 'grad_data': grad_data,'under_data': under_data,'collab_data': collab_data,
-                'alumni_data': alumni_data }, context_instance=RequestContext(request))
+                'alumni_data': alumni_data, 'postdoc_alumni_data': postdoc_alumni_data, 'undergrad_alumni_data': undergrad_alumni_data,
+                'graduate_alumni_data': graduate_alumni_data }, context_instance=RequestContext(request))
 
 
 def person_detail(request, person):

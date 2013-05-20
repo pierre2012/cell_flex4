@@ -15,6 +15,10 @@ class Person(models.Model):
             (3 , 'Undergrad'),
             (4 , 'Collaborator'),
             (5 , 'Alumni'),
+            (6 , 'Postdoc Alumni'),
+            (7 , 'Undergraduate Alumni'),
+            (8 , 'Graduate Alumni'),
+            (99 , 'Invisible'),
     )
 
     name = models.CharField(max_length=250, blank=True)
@@ -40,6 +44,12 @@ class Person(models.Model):
 
     class Admin:
         pass
+        
+    def admin_image(self):
+        return '<img src="%s" height="50" />' % self.image.url
+    
+    admin_image.allow_tags = True
+
 
     def __unicode__(self):
         return self.name

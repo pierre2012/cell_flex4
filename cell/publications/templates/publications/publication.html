@@ -11,7 +11,7 @@
 <a href="/publications/{{ author_escaped }}/" class="author">{{ author }}</a>{% if not forloop.last %}{% if forloop.revcounter == 2 %}{% if not forloop.first %},{% endif %} and {% else %}, {% endif %}{% endif %}
 {% endfor %}</b>
 <br />
-<h4><a href="/publications/{{ publication.pk }}/" class="small">{{ publication.title|tex_parse }}</a></h4>
+<h4><a id="publication" href="/publications/{{ publication.pk }}/" class="small">{{ publication.title|tex_parse }}</a></h4>
 
 
 <p style="color: #000099;">
@@ -32,6 +32,8 @@
 {% endif %}
 
 {% if publication.keywords %}
+
+<h5>
 	{% for keyword, keyword_escaped in publication.keywords_escaped %}
 	
 	{% ifequal keyword 'biomedical imaging' %}
@@ -41,18 +43,58 @@
 		
 		
 		{% else %}
-		<h5><a class="keyword" href="/publications/tag/{{ keyword_escaped }}/">{{ keyword }}</a></h5>
+		<a class="keyword" href="/publications/tag/{{ keyword_escaped }}/">{{ keyword }}</a>{% if not forloop.last %}, {% endif %}
 		{% endifequal %}
+		
+		
 	{% endfor %}
+	
+	</h5>
 	<br />
 {% endif %}
 
 </p>
 
-{% if publication.code %}<a class="link" href="{{ publication.code }}">Code</a>,{% endif %}
-{% if publication.url %}<a class="link" rel="external" href="{{ publication.url }}">URL</a>,{% endif %}
-{% if publication.pdf %}<a class="link" href="{{ MEDIA_URL }}{{ publication.pdf }}">PDF</a>,{% endif %}
-{% if publication.doi %}<a class="link" rel="external" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>,{% endif %}
-<a href="/publications/{{ publication.pk }}/?bibtex">BibTex</a>
+
+{% if publication.abstract %} <a id="publication_links" class="show_hide{{publication.id}}" style="display: inline; ">Abstract</a>,{% endif %}
+{% if publication.code %}<a id="publication_links" class="link" href="{{ publication.code }}">Code</a>,{% endif %}
+
+
+{% if publication.url %}
+	{% if "pubmed" in publication.url %}
+	<a id="publication_links" class="link" rel="external" href="{{ publication.url }}">PubMed</a>,
+	{% else %}
+	<a id="publication_links" class="link" rel="external" href="{{ publication.url }}">URL</a>,
+	{% endif %}
+{% endif %}
+
+
+{% if publication.pdf %}<a id="publication_links" class="link" href="{{ MEDIA_URL }}{{ publication.pdf }}">PDF</a>,{% endif %}
+{% if publication.doi %}<a id="publication_links" class="link" rel="external" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>,{% endif %}
+
+<a id="publication_links" class="link" href="http://scholar.google.com/scholar?q={{ publication.title }} 
+{% for author, author_escaped in publication.authors_escaped %}
+{{ author_escaped }} 
+{% endfor %}
+">Google Scholar</a>,
+
+
+<!-- <a id="publication_links" href="/publications/{{ publication.pk }}/?bibtex">BibTex</a> -->
+<a id="publication_links" class="show_hide_two{{publication.id}}" style="display: inline; ">Bibtex</a>
+
+
+{% if publication.abstract %}
+
+<div class="slidingDiv{{publication.id}}" style="display: none; ">
+{{publication.abstract}}<br><br>
+</div>
+
+{% endif %}
+
+<div class="slidingDiv_two{{publication.id}}" style="display: none; ">
+<pre lang="bibtex">{% include "publications/publication.bib" %}</pre>
+</div>
+
+
 </div> </div>
 <!-- {% if publication.abstract %}<br><br><p>{{publication.abstract}}</p>{% endif %} -->

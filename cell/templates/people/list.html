@@ -82,7 +82,10 @@ $(function() {
 		  <button class="btn"><a href="#grad">Graduate</a></button>
 		  <button class="btn"><a href="#undergrad">Undergraduate</a></button>
 		  <button class="btn"><a href="#collab">Collaborator</a></button>
-		  <button class="btn"><a href="#alumni">Alumni</a></button>		  
+		  <button class="btn"><a href="#postdoc_alumni">Postdoc Alumni</a></button>		  
+		  <button class="btn"><a href="#grad_alumni">Graduate Alumni</a></button>		  
+		  <button class="btn"><a href="#undergrad_alumni">Undergraduate Alumni</a></button>		  
+		  <!-- <button class="btn"><a href="#alumni">Alumni</a></button>		   -->
 		</div>
 
 
@@ -155,13 +158,55 @@ $(function() {
 
 {% for person in collab_data %}
 
-{% include "people/person.html" %}
+{% include "people/person_small.html" %}
 
 {% endfor %}
 
 </div>
 
 
+
+<div id="postdoc_alumni">
+<h2></h2>
+<hr class="featurette-divider">
+
+
+{% for person in postdoc_alumni_data %}
+
+{% include "people/person_small.html" %}
+
+{% endfor %}
+
+</div>
+
+
+
+<div id="grad_alumni">
+<h2></h2>
+<hr class="featurette-divider">
+
+
+{% for person in graduate_alumni_data %}
+
+{% include "people/person_small.html" %}
+
+{% endfor %}
+
+</div>
+
+
+<div id="undergrad_alumni">
+<h2></h2>
+<hr class="featurette-divider">
+
+
+{% for person in undergrad_alumni_data %}
+
+{% include "people/person_small.html" %}
+
+{% endfor %}
+
+</div>
 
 <div id="alumni">
 <h2></h2>
@@ -170,13 +215,11 @@ $(function() {
 
 {% for person in alumni_data %}
 
-{% include "people/person.html" %}
+{% include "people/person_small.html" %}
 
 {% endfor %}
 
 </div>
-
-
 
 
 
