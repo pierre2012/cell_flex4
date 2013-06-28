@@ -135,6 +135,8 @@ INSTALLED_APPS = (
     # 'papers',
     'contact',
     'static',
+    
+    'watson',
 )
 
 # A sample logging configuration. The only tangible logging

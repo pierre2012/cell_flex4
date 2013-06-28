@@ -31,7 +31,7 @@
 	  {% ifequal person.member_type 5 %}<p class="small"><h5>Alumni</h5></p>{% endifequal %}	  
   </span></p>
   	  
-	{% if person.short_bio %}<p class="small"><span>{{person.short_bio}}</span></p>{% endif %}
+	{% if person.short_bio %}<p class="small"><span>{% autoescape off %}{{person.short_bio}}{% endautoescape %}</span></p>{% endif %}
 
 	<!-- {% if person.address %}<p class="lead">Contact: <span class="muted">{{person.address}}</span></p>{% endif %} -->
   

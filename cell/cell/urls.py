@@ -73,6 +73,8 @@ urlpatterns += patterns('static.views',
     #     
     # (r'^images/$', 'images'),
     # (r'images^$', 'images'),
+    
+	(r'^search/$', 'search'),
 
 )
 

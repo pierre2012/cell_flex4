@@ -72,29 +72,29 @@ $(function() {
 	</div>
 	</div> -->
 	
+
 	
-	
-	<div class="span12">
-		<br><br>
-		<div class="btn-group">
-  		  <button class="btn"><a href="#faculty">Faculty</a></button>
-		  <button class="btn"><a href="#postdoc">Post Doc</a></button>
-		  <button class="btn"><a href="#grad">Graduate</a></button>
-		  <button class="btn"><a href="#undergrad">Undergraduate</a></button>
-		  <button class="btn"><a href="#collab">Collaborator</a></button>
-		  <button class="btn"><a href="#postdoc_alumni">Postdoc Alumni</a></button>		  
-		  <button class="btn"><a href="#grad_alumni">Graduate Alumni</a></button>		  
-		  <button class="btn"><a href="#undergrad_alumni">Undergraduate Alumni</a></button>		  
-		  <!-- <button class="btn"><a href="#alumni">Alumni</a></button>		   -->
+	<div class="span12">		<br><br>
+
+		<div class="btn-toolbar">
+		  <div class="btn-group">
+		    <a class="btn" href="#faculty">Faculty</a>
+		    <a class="btn" href="#postdoc">Post Doc</a>
+		    <a class="btn" href="#grad">Graduate</a>
+		    <a class="btn" href="#undergrad">Undergraduate</a>
+		    <a class="btn" href="#collab">Collaborator</a>
+		    <a class="btn" href="#postdoc_alumni">Postdoc Alumni</a>
+		    <a class="btn" href="#grad_alumni">Graduate Alumni</a>
+		    <a class="btn" href="#undergrad_alumni">Undergraduate Alumni</a>
+
+		  </div>
 		</div>
 
-
-
-	<div id="faculty">
-		<h2></h2>
 		
 	<hr class="featurette-divider">
+	<a name="faculty"></a>
 
+<div>
 {% for person in faculty_data %}
 
 {% include "people/person.html" %}
@@ -103,12 +103,10 @@ $(function() {
 </div>
 
 
-
-<div id="postdoc">
-<h2></h2>
 <hr class="featurette-divider">
+	<a name="postdoc"></a>
 
-
+	<div>
 {% for person in postdoc_data %}
 
 {% include "people/person.html" %}
@@ -120,10 +118,9 @@ $(function() {
 
 
 
-<div id="grad">
-<h2></h2>
 <hr class="featurette-divider">
-
+	<a name="grad"></a> 
+	<div>
 
 {% for person in grad_data %}
 
@@ -136,10 +133,11 @@ $(function() {
 
 
 
-<div id="undergrad">
-<h2></h2>
+	
+	{% if under_data %}
 <hr class="featurette-divider">
-
+	<a name="undergrad"></a> 
+	<div>
 
 {% for person in under_data %}
 
@@ -149,69 +147,112 @@ $(function() {
 
 </div>
 
+{% endif %}
 
 
-<div id="collab">
-<h2></h2>
 <hr class="featurette-divider">
 
+	<a name="collab"></a> 
+	<div>
+<h2>Collaborators</h2>
 
+<div class="well">
+		
+<h4 class="heading">
 {% for person in collab_data %}
 
-{% include "people/person_small.html" %}
+<!-- <div> -->
+<!-- {% if person.image %}<img width="100" class="img-rounded" src="{{person.image.url}}">{% endif %} -->
+
+<a href="/people/{{person.id}}/">{{person.name}}</a>{% if not forloop.last %}, {% endif %}
+<!-- </div> -->
+
 
 {% endfor %}
 
+</h4>
+
+</div>
 </div>
 
 
 
-<div id="postdoc_alumni">
-<h2></h2>
 <hr class="featurette-divider">
+	<a name="postdoc_alumni"></a> 
+	<div>
+<h2>Postdoc Alumni</h2>
 
-
+<div class="well">
+		
+<h4 class="heading">
 {% for person in postdoc_alumni_data %}
 
-{% include "people/person_small.html" %}
+<a href="/people/{{person.id}}/">{{person.name}}</a>{% if not forloop.last %}, {% endif %}
 
 {% endfor %}
 
+</h4>
+
+</div>
 </div>
 
 
 
-<div id="grad_alumni">
-<h2></h2>
+
+
 <hr class="featurette-divider">
+	<a name="grad_alumni"></a> 
+	<div>
+<h2>Graduate Alumni</h2>
 
+<div class="well">
+		
+<h4 class="heading">
+	{% for person in graduate_alumni_data %}
 
-{% for person in graduate_alumni_data %}
-
-{% include "people/person_small.html" %}
+<a href="/people/{{person.id}}/">{{person.name}}</a>{% if not forloop.last %}, {% endif %}
 
 {% endfor %}
 
+</h4>
+
+</div>
 </div>
 
 
-<div id="undergrad_alumni">
-<h2></h2>
+
 <hr class="featurette-divider">
+	<a name="undergrad_alumni"></a> 
+	<div>
+<h2 id="undergrad_alumni">Undergraduate Alumni</h2>
 
+<div class="well">
+		
+<h4 class="heading">
+	{% for person in undergrad_alumni_data %}
 
-{% for person in undergrad_alumni_data %}
-
-{% include "people/person_small.html" %}
+<a href="/people/{{person.id}}/">{{person.name}}</a>{% if not forloop.last %}, {% endif %}
 
 {% endfor %}
 
+</h4>
+
+</div>
 </div>
 
-<div id="alumni">
-<h2></h2>
-<hr class="featurette-divider">
 
+
+
+
+
+
+
+	{% if alumni_data %}
+	
+
+<hr class="featurette-divider">
+<a id="alumni"></a> 
+<div>
 
 {% for person in alumni_data %}
 
@@ -219,7 +260,12 @@ $(function() {
 
 {% endfor %}
 
+{% endif %}
+
+
 </div>
+
+
 
 
 

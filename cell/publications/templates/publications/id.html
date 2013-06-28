@@ -77,7 +77,7 @@
 
 
 
-		{% if publication.code %}<a id="publication_links" class="link" href="{{ publication.code }}">Code</a>,{% endif %}
+		{% if publication.code %}<a id="publication_links" class="link" href="{{ publication.code }}">Software</a>,{% endif %}
 		{% if publication.url %}<a id="publication_links" class="link" rel="external" href="{{ publication.url }}">URL</a>,{% endif %}
 		{% if publication.pdf %}<a id="publication_links" class="link" href="{{ MEDIA_URL }}{{ publication.pdf }}">PDF</a>,{% endif %}
 		{% if publication.doi %}<a id="publication_links" class="link" rel="external" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>,{% endif %}

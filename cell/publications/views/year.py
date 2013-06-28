@@ -12,7 +12,7 @@ def year(request, year=None):
 		publications = Publication.objects.filter(year=year, external=False)
 	else:
 		publications = Publication.objects.filter(external=False)
-	publications = publications.order_by('-year', '-month', '-id')
+	publications = publications.order_by('-year', '-month', '-paper_number', '-id')
 
 	for publication in publications:
 		if publication.type.hidden:

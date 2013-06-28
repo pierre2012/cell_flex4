@@ -78,3 +78,25 @@ def kolam(request):
     return render_to_response('static/kolam.html')
 
 
+
+
+
+import watson
+
+def search(request):
+    
+    search_results = ''
+    
+    if ('q' in request.GET) and request.GET['q'].strip():
+        
+        query_string = request.GET['q']
+        
+    	search_results = watson.search(query_string)    
+    
+    	return render_to_response('static/search.html', {'search_results': search_results}, context_instance=RequestContext(request))
+
+    return render_to_response('static/search.html', context_instance=RequestContext(request))
+
+
+
+

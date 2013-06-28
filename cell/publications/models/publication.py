@@ -79,6 +79,8 @@ class Publication(models.Model):
 
     #brett mod #2 here added this
 	image = models.ImageField(upload_to='publications/', blank=True)
+	paper_number = models.IntegerField(blank=True, null=True)
+
 
 	def __init__(self, *args, **kwargs):
 		models.Model.__init__(self, *args, **kwargs)
@@ -222,3 +224,13 @@ class Publication(models.Model):
 	def clean(self):
 		if not self.citekey:
 			self.citekey = self.key()
+
+	def get_absolute_url(self):
+		return "/publications/%s/" % self.id
+
+
+import watson
+
+watson.register(Publication)
+
+

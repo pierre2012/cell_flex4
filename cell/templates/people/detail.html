@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}project detail{% endblock %}
+{% block title %}{{person_data.name}}{% endblock %}
 
 
 {% block page_header %}
@@ -12,6 +12,8 @@
 
 
 {% if person_data %}
+
+<br><br>
 <div class="row">
    
 	<div class="well">
@@ -19,10 +21,10 @@
 	
 		<div class="row">
 	
-	  {% if person_data.image %}<div class="span1"><img class="img-rounded pull-left" src="{{person_data.image.url}}"></div>{% endif %}
+	  {% if person_data.image %}<div class="span2"><img class="img-rounded pull-left" src="{{person_data.image.url}}"></div>{% endif %}
   
-	  <div class="span7"><h4 class="heading"><a href="/people/{{person_data.id}}/">{{person_data.name}}</a></h4>
-	  {% if person_data.short_bio %}<p class="small"><span class="muted">{{person_data.short_bio}}</span></p>{% endif %}
+	  <div class="span8"><h4 class="heading"><a href="/people/{{person_data.id}}/">{{person_data.name}}</a></h4>
+	  {% autoescape off %}{% if person_data.short_bio %}<p class="small"><span class="muted">{{person_data.short_bio}}</span></p>{% endif %}{% endautoescape %}
 	  
 	  <!-- {% if person.address %}<p class="lead">Contact: <span class="muted">{{person.address}}</span></p>{% endif %} -->
 	  {% if person_data.publications_name %}<p class="small"><a href="/publications/{{person_data.publications_name}}/">Publications</a></p>{% endif %}

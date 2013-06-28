@@ -3,14 +3,19 @@
 	
 	<div class="row">
 	
+		
+	
     {% if publication.image %}<div class="span2"><img class="img-rounded pull-left" src="{{publication.image.url}}"></div>{% endif %}
 	
 	<div class="span9">
 		<b>
+			{% if publication.paper_number %}#{{publication.paper_number}}: {% endif %}
+			
 {% for author, author_escaped in publication.authors_escaped %}
 <a href="/publications/{{ author_escaped }}/" class="author">{{ author }}</a>{% if not forloop.last %}{% if forloop.revcounter == 2 %}{% if not forloop.first %},{% endif %} and {% else %}, {% endif %}{% endif %}
 {% endfor %}</b>
 <br />
+
 <h4><a id="publication" href="/publications/{{ publication.pk }}/" class="small">{{ publication.title|tex_parse }}</a></h4>
 
 
@@ -57,7 +62,16 @@
 
 
 {% if publication.abstract %} <a id="publication_links" class="show_hide{{publication.id}}" style="display: inline; ">Abstract</a>,{% endif %}
-{% if publication.code %}<a id="publication_links" class="link" href="{{ publication.code }}">Code</a>,{% endif %}
+
+{% if publication.pdf %}<a id="publication_links" class="link" href="{{ MEDIA_URL }}{{ publication.pdf }}">PDF</a>,{% endif %}
+
+<!-- {% if publication.code %}<a id="publication_links" class="link" href="{{ publication.code }}">Web</a>,{% endif %} -->
+
+<!-- <a id="publication_links" href="/publications/{{ publication.pk }}/?bibtex">BibTex</a> -->
+<a id="publication_links" class="show_hide_two{{publication.id}}" style="display: inline; ">Bibtex</a>,
+
+
+
 
 
 {% if publication.url %}
@@ -69,18 +83,14 @@
 {% endif %}
 
 
-{% if publication.pdf %}<a id="publication_links" class="link" href="{{ MEDIA_URL }}{{ publication.pdf }}">PDF</a>,{% endif %}
 {% if publication.doi %}<a id="publication_links" class="link" rel="external" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>,{% endif %}
 
-<a id="publication_links" class="link" href="http://scholar.google.com/scholar?q={{ publication.title }} 
-{% for author, author_escaped in publication.authors_escaped %}
+<a id="publication_links" class="link" href="http://scholar.google.com/scholar?q={{ publication.title }}">Google Scholar</a> 
+
+<!-- {% for author, author_escaped in publication.authors_escaped %}
 {{ author_escaped }} 
-{% endfor %}
-">Google Scholar</a>,
+{% endfor %} -->
 
-
-<!-- <a id="publication_links" href="/publications/{{ publication.pk }}/?bibtex">BibTex</a> -->
-<a id="publication_links" class="show_hide_two{{publication.id}}" style="display: inline; ">Bibtex</a>
 
 
 {% if publication.abstract %}
@@ -94,6 +104,7 @@
 <div class="slidingDiv_two{{publication.id}}" style="display: none; ">
 <pre lang="bibtex">{% include "publications/publication.bib" %}</pre>
 </div>
+
 
 
 </div> </div>
