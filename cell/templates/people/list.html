@@ -151,29 +151,26 @@ $(function() {
 
 
 <hr class="featurette-divider">
+<p>
+    <a name="collab" id="collab"></a>
+</p>
+<div>
+    <h2>
+        Collaborators
+    </h2>
+    
+    <div class="well">
+        <ul class="thumbnails">                
+             {% for person in collab_data %}
+             
+             {% include "people/person_small.html" %}
 
-	<a name="collab"></a> 
-	<div>
-<h2>Collaborators</h2>
-
-<div class="well">
-		
-<h4 class="heading">
-{% for person in collab_data %}
-
-<!-- <div> -->
-<!-- {% if person.image %}<img width="100" class="img-rounded" src="{{person.image.url}}">{% endif %} -->
-
-<a href="/people/{{person.id}}/">{{person.name}}</a>{% if not forloop.last %}, {% endif %}
-<!-- </div> -->
-
-
-{% endfor %}
-
-</h4>
-
+                
+                {% endfor %}
+        </ul>
+    </div>
 </div>
-</div>
+
 
 
 
@@ -182,20 +179,17 @@ $(function() {
 	<div>
 <h2>Postdoc Alumni</h2>
 
-<div class="well">
-		
-<h4 class="heading">
-{% for person in postdoc_alumni_data %}
+    <div class="well">
+        <ul class="thumbnails">                
+             {% for person in postdoc_alumni_data %}
+             
+             {% include "people/person_small.html" %}
 
-<a href="/people/{{person.id}}/">{{person.name}}</a>{% if not forloop.last %}, {% endif %}
-
-{% endfor %}
-
-</h4>
-
+                
+                {% endfor %}
+        </ul>
+    </div>
 </div>
-</div>
-
 
 
 
@@ -205,19 +199,18 @@ $(function() {
 	<div>
 <h2>Graduate Alumni</h2>
 
-<div class="well">
-		
-<h4 class="heading">
-	{% for person in graduate_alumni_data %}
+    <div class="well">
+        <ul class="thumbnails">                
+             {% for person in graduate_alumni_data %}
+             
+             {% include "people/person_small.html" %}
 
-<a href="/people/{{person.id}}/">{{person.name}}</a>{% if not forloop.last %}, {% endif %}
-
-{% endfor %}
-
-</h4>
-
+                
+                {% endfor %}
+        </ul>
+    </div>
 </div>
-</div>
+
 
 
 
@@ -226,19 +219,19 @@ $(function() {
 	<div>
 <h2 id="undergrad_alumni">Undergraduate Alumni</h2>
 
-<div class="well">
-		
-<h4 class="heading">
-	{% for person in undergrad_alumni_data %}
+    <div class="well">
+        <ul class="thumbnails">                
+             {% for person in undergrad_alumni_data %}
+             
+             {% include "people/person_small.html" %}
 
-<a href="/people/{{person.id}}/">{{person.name}}</a>{% if not forloop.last %}, {% endif %}
-
-{% endfor %}
-
-</h4>
-
+                
+                {% endfor %}
+        </ul>
+    </div>
 </div>
-</div>
+
+
 
 
 

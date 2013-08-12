@@ -30,6 +30,12 @@
 	  {% if person_data.publications_name %}<p class="small"><a href="/publications/{{person_data.publications_name}}/">Publications</a></p>{% endif %}
 	  
 	</div></div>
+    
+    
+    {% if person_data.custom_user_page_html %}
+    {% autoescape off %}{{ person_data.custom_user_page_html }}{% endautoescape %}
+    {% endif %}
+    
 	</p>
 	</div>
  

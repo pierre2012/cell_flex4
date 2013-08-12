@@ -4,6 +4,6 @@
 
 {% block content %}
 
-{{ flatpage.content }}
+{% autoescape off %}{{ flatpage.content }}{% endautoescape %}
 
 {% endblock %}

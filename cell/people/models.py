@@ -36,7 +36,7 @@ class Person(models.Model):
     image = models.ImageField(upload_to='people/', blank=True)
     sortorder = models.IntegerField(blank=True, null=True)
     
-    
+    custom_user_page_html = models.TextField(blank=True)
     
     class Meta:
         verbose_name = "Person"

@@ -77,11 +77,18 @@
 
 
 
-		{% if publication.code %}<a id="publication_links" class="link" href="{{ publication.code }}">Software</a>,{% endif %}
-		{% if publication.url %}<a id="publication_links" class="link" rel="external" href="{{ publication.url }}">URL</a>,{% endif %}
+        <!-- {% if publication.code %}<a id="publication_links" class="link" href="{{ publication.code }}">Software</a>,{% endif %} -->
 		{% if publication.pdf %}<a id="publication_links" class="link" href="{{ MEDIA_URL }}{{ publication.pdf }}">PDF</a>,{% endif %}
+        {% if publication.note %}
+        {% autoescape off %}{{ publication.note }},{% endautoescape %}
+        {% endif %}
+        
+		{% if publication.url %}<a id="publication_links" class="link" rel="external" href="{{ publication.url }}">URL</a>,{% endif %}
+
 		{% if publication.doi %}<a id="publication_links" class="link" rel="external" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>,{% endif %}
 		<!-- <a id="publication_links" href="/publications/{{ publication.pk }}/?bibtex">BibTex</a> -->
+
+        <a id="publication_links" class="link" href="http://scholar.google.com/scholar?q={{ publication.title }} {% for author, author_escaped in publication.authors_escaped %} {% if forloop.first %}author:'{{ author_escaped }}'{% endif %} {% endfor %}">Google Scholar</a> 
 
 
 		</div> </div>
@@ -92,7 +99,7 @@
 		<!-- <br><br><br> -->
 	    <!-- {% if publication.image %}<div class="span8"><img class="img-rounded pull-left" src="{{publication.image.url}}"></div>{% endif %}<br><br><br> -->
 		
-		{% if publication.abstract %}<br><br><p>{{publication.abstract}}</p>{% endif %}
+		{% if publication.abstract %}<h4>Abstract</h4><p>{{publication.abstract}}</p>{% endif %}
 		
 		</div>
 		<h1>Reference</h1>
