@@ -98,3 +98,20 @@ urlpatterns += patterns('people.views',
 	(r'^people/(?P<person>[-\w]+)/$', 'person_detail'),
 
 )
+
+#there be dragons here lol
+from django.conf.urls.defaults import *
+from django.utils.translation import ugettext_noop as _
+
+from software_form import views as software_form_views
+
+urlpatterns += patterns('software_form',
+    
+    url(_(r'^download/$'),
+        software_form_views.ContactFormView.as_view(),
+        name="software"),
+        
+    (r'^download/thankyou', 'views.thankyou'),
+    
+)
+

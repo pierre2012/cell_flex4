@@ -19,9 +19,19 @@
 	<div class="well">
 	<p>
 	
-		<div class="row">
-	
-	  {% if person_data.image %}<div class="span2"><img class="img-rounded pull-left" src="{{person_data.image.url}}"></div>{% endif %}
+	<div class="row">
+
+      
+      {% if person_data.image %}
+      {% load imagekit %}
+    
+      <div class="span3">
+      <a href="/people/{{person.id}}/">
+      {% thumbnail '150x200' person_data.image -- class="img-rounded pull-left" %}</a></span>
+      
+      
+      {% endif %}
+      
   
 	  <div class="span8"><h4 class="heading"><a href="/people/{{person_data.id}}/">{{person_data.name}}</a></h4>
 	  {% autoescape off %}{% if person_data.short_bio %}<p class="small"><span class="muted">{{person_data.short_bio}}</span></p>{% endif %}{% endautoescape %}

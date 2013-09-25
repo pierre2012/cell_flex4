@@ -1,12 +1,21 @@
 {% if person %}
 
-    <li class="span2">
-        {% if person.image %}<a href="/people/{{person.id}}/">
-    <img width="100" class="img-rounded" src="{{person.image.url}}"></a><br>{% endif %}
+    <li class="span3">
+    
+    {% if person.image %}
+    {% load imagekit %}
+    
+    <a href="/people/{{person.id}}/">
+    {% thumbnail '150x200' person.image -- class="img-rounded" %}</a>
+    {% endif %}
+    
+    
     <h4>
         <a href="/people/{{person.id}}/">{{person.name}}</a>
     </h4>
+    
     </li>
+
 
 {% else %}
 {% endif %}

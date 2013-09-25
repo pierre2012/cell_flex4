@@ -61,13 +61,13 @@ MEDIA_URL = 'http://cell.missouri.edu/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/home/skoonce/tmp'
+STATIC_ROOT = '/usr/mvl1/sbkthf/django_cell/media/static'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://static.zephyrcharts.com/'
+STATIC_URL = 'http://cell.missouri.edu/media/static/'
 
-ADMIN_MEDIA_PREFIX = 'http://static.zephyrcharts.com/admin_media/'
+#ADMIN_MEDIA_PREFIX = 'http://cell.missouri.edu/media/static/admin/'
 
 
 # Additional locations of static files
@@ -130,13 +130,21 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
     
+    #some form plugins
+    'crispy_forms',
+    'floppyforms',
+    
+    #a slightly-modified ;-) version of django-publications from Lucas in Germany
     'publications',
     #our junk
     'people',
     # 'papers',
     'contact',
     'static',
+    'software_form',
     
+    #some plugins
+    'imagekit',
     'watson',
 )
 

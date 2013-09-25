@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Download Software{% endblock %}
+
+
+{% block content %}
+
+
+<div class="page-header">
+    <h1>CIVA Packages</h1>
+  </div>
+  
+  
+  <p>Welcome to our download page.  Please fill out the form below and we will email you a download link shortly.</p>
+  
+<div class="row">
+    <div class="span12">
+        <div class="well">
+            <h1>
+            </h1>
+            
+            {% crispy form form.helper %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

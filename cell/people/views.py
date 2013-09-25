@@ -35,3 +35,14 @@ def person_detail(request, person):
     person_data = Person.objects.get(id=person)
     
     return render_to_response('people/detail.html', {'person_data': person_data}, context_instance=RequestContext(request))
+
+
+from imagekit import ImageSpec, register
+from imagekit.processors import ResizeToFill
+
+class PeopleThumbnail(ImageSpec):
+    processors = [ResizeToFill(100, 50)]
+    format = 'JPEG'
+    options = {'quality': 60}
+
+register.generator('people:thumbnail', PeopleThumbnail)

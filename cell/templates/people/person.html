@@ -5,7 +5,17 @@
 	
 	<div class="row">
 	
-  {% if person.image %}<div class="span2"><img class="img-rounded pull-left" src="{{person.image.url}}"></div>{% endif %}
+  {% if person.image %}
+  
+  {% load imagekit %}
+
+
+<div class="span2">
+  {% thumbnail '150x200' person.image -- class="img-rounded" %}
+</div>
+  
+  
+  {% endif %}
   
   <div class="span9"><h4 class="heading"><a href="/people/{{person.id}}/">{{person.name}}</a></h4>
 	  

@@ -3,13 +3,19 @@
 	
 	<div class="row">
 	
+        {% if publication.image %}
+        {% load imagekit %}
+    
+        <div class="span2">
+        {% thumbnail '200x200' publication.image -- class="img-rounded pull-left" %}</div>
+      
+      
+        {% endif %}
 		
-	
-    {% if publication.image %}<div class="span2"><img class="img-rounded pull-left" src="{{publication.image.url}}"></div>{% endif %}
-	
 	<div class="span9">
 		<b>
 			{% if publication.paper_number %}#{{publication.paper_number}}: {% endif %}
+            {% if publication.external %}External lab:{% endif %}
 			
 {% for author, author_escaped in publication.authors_escaped %}
 <a href="/publications/{{ author_escaped }}/" class="author">{{ author }}</a>{% if not forloop.last %}{% if forloop.revcounter == 2 %}{% if not forloop.first %},{% endif %} and {% else %}, {% endif %}{% endif %}
