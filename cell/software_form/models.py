@@ -11,7 +11,7 @@ class Submission(models.Model):
 		pass
 	
 	def __repr__(self):
-		return self.email
+		return self.email_address
 	
 	def __str__(self):
-		return self.email
+		return self.email_address

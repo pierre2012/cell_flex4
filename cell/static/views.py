@@ -37,6 +37,10 @@ def publications(request):
     return render_to_response('static/publications.html')
 
 
+def presentations(request):
+    
+    return render_to_response('static/presentations.html')
+
 
 
 

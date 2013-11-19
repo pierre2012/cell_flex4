@@ -58,10 +58,10 @@ urlpatterns += patterns('static.views',
     # 
     # (r'^people/$', 'people'),
     # (r'people^$', 'people'),
-    #     
-    # (r'^publications/$', 'publications'),
-    # (r'publications^$', 'publications'),
-    #     
+
+    (r'^presentations/$', 'presentations'),
+    (r'presentations^$', 'presentations'),
+        
 
     #     
     # (r'^courses/$', 'courses'),
