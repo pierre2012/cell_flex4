@@ -8,13 +8,13 @@
 
 {% block content %}
 	<div class="special_links">
-		<a href="?ascii">plain text</a>, 
+		Cite: <a href="?ascii">Plain Text</a>, 
 		<a href="?bibtex">BibTex</a>
 	</div>
 	{% for publication in publications %}
 	{% load publication_extras %}
     
-		<h1>{{ publication.title|tex_parse }}</h1>
+		<h1>{% if publication.paper_number %}#{{publication.paper_number}}: {% endif %}{{ publication.title|tex_parse }}</h1>
 		<hr/>
 		<div style="margin-bottom: 30px;">
 		
@@ -23,9 +23,9 @@
 	
 			<div class="row">
 	
-		    {% if publication.image %}<div class="span2"><img class="img-rounded pull-left" src="{{publication.image.url}}"></div>{% endif %}
+		    {% if publication.image %}<div class="span4"><img class="img-rounded pull-left" src="{{publication.image.url}}"></div>{% endif %}
 	
-			<div class="span9">
+			<div class="span7">
 				<b>
 		{% for author, author_escaped in publication.authors_escaped %}
 		<a href="/publications/{{ author_escaped }}/" class="author">{{ author }}</a>{% if not forloop.last %}{% if forloop.revcounter == 2 %}{% if not forloop.first %},{% endif %} and {% else %}, {% endif %}{% endif %}
@@ -70,7 +70,6 @@
 			{% endfor %}
 	
 			</h5>
-			<br />
 		{% endif %}
 
 		</p>

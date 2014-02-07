@@ -4,6 +4,8 @@
 
 {% block page_header %} Publications{% endblock %}
 
+{% block notes_for_the_below %}don't even ask{% endblock %}
+
 {% block js_headers %}
 	{{ block.super }}
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="?rss" />
@@ -1650,6 +1652,40 @@
   </div>
 </div>
 
+<br>
+<h4>Keywords</h4>
+
+<div class="btn-toolbar">
+  <div class="btn-group">
+      <a class="btn" href="/publications/tag/features/">features</a>
+      <a class="btn" href="/publications/tag/motion/">motion</a>
+      <a class="btn" href="/publications/tag/biomedical/">biomedical</a>
+      <a class="btn" href="/publications/tag/data+mining/">data mining</a>
+      <a class="btn" href="/publications/tag/FMV/">FMV</a>
+      <a class="btn" href="/publications/tag/parallelization/">parallelization</a>
+      <a class="btn" href="/publications/tag/DoD/">DoD</a>
+      <a class="btn" href="/publications/tag/segmentation/">segmentation</a>
+      <a class="btn" href="/publications/tag/remote+sensing/">remote sensing</a>
+
+  </div>
+</div>
+
+<div class="btn-toolbar">
+  <div class="btn-group">
+
+      <a class="btn" href="/publications/tag/active+contours/">active contours</a>
+      <a class="btn" href="/publications/tag/fusion/">fusion</a>
+      <a class="btn" href="/publications/tag/machine+learning/">machine learning</a>
+      <a class="btn" href="/publications/tag/WAMI/">WAMI</a>
+      <a class="btn" href="/publications/tag/visualization/">visualization</a>
+      <a class="btn" href="/publications/tag/classification/">classification</a>
+      <a class="btn" href="/publications/tag/cell+segmentation/">cell segmentation</a>
+      <a class="btn" href="/publications/tag/image+analysis/">image analysis</a>
+
+  </div>
+</div>
+
+
 
 {% endif %}
 
@@ -1681,7 +1717,7 @@
 <br><br>
 
 	<div class="special_links">
-		<a href="?ascii">plain text</a>, 
+		Cite: <a href="?ascii">Plain Text</a>, 
 		<a href="?bibtex">BibTex</a>
 	</div>
 	
@@ -1703,7 +1739,7 @@
 	
 	
 	{% if author %}
-		<h1>Publications by &quot;{{ author }}&quot;</h1>
+		<h1>CIVA Publications by &quot;{{ author }}&quot;</h1>
 		<hr/>
 		{% for publication in publications %}
 			<div{% if not forloop.last %} style="margin-bottom: 20px;"{% endif %}>
@@ -1714,7 +1750,7 @@
 	{% endif %}
 	
 	{% if keyword %}
-		<h1>Publications with the keyword &quot;{{ keyword }}&quot;</h1>
+		<h1>{{publications|length}} publications with the keyword &quot;{{ keyword }}&quot;</h1>
 		<hr/>
 		{% for publication in publications %}
 			<div{% if not forloop.last %} style="margin-bottom: 20px;"{% endif %}>

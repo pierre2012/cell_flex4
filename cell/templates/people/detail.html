@@ -26,7 +26,7 @@
       {% load imagekit %}
     
       <div class="span3">
-      <a href="/people/{{person.id}}/">
+      <a href="/people/{{person_data.id}}/">
       {% thumbnail '150x200' person_data.image -- class="img-rounded pull-left" %}</a></span>
       
       
@@ -40,7 +40,9 @@
 	  {% if person_data.publications_name %}<p class="small"><a href="/publications/{{person_data.publications_name}}/">Publications</a></p>{% endif %}
 	  
 	</div></div>
-    
+    {% if person_data.website %}
+    {% autoescape off %}Website: <a href="{{ person_data.website }}">{{ person_data.website }}</a>.{% endautoescape %}
+    {% endif %}
     
     {% if person_data.custom_user_page_html %}
     {% autoescape off %}{{ person_data.custom_user_page_html }}{% endautoescape %}
