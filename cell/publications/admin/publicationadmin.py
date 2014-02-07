@@ -11,7 +11,7 @@ class PublicationAdmin(admin.ModelAdmin):
 	search_fields = ('title', 'journal', 'authors', 'keywords', 'year')
 	fieldsets = (
 		(None, {'fields': 
-			('type', 'title', 'authors', 'year', 'month')}),
+			('type', 'title', 'authors', 'year', 'month', 'paper_number')}),
 		(None, {'fields': 
 			('journal', 'book_title', 'publisher', 'volume', 'number', 'pages')}),
 		(None, {'fields': 

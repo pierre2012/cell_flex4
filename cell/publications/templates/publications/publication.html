@@ -68,7 +68,11 @@
 
 {% if publication.abstract %} <a id="publication_links" class="show_hide{{publication.id}}" style="display: inline; ">Abstract</a>,{% endif %}
 
-<a id="publication_links" class="show_hide_two{{publication.id}}" style="display: inline; ">Bibtex</a>,
+<a id="publication_links" class="show_hide_two{{publication.id}}" style="display: inline; ">Bibtex</a>,  
+
+<a id="publication_links" href="/publications/{{publication.id}}/?ascii" style="display: inline; ">PlainText</a>,  
+
+
 
 {% if publication.pdf %}<a id="publication_links" class="link" href="{{ MEDIA_URL }}{{ publication.pdf }}">PDF</a>,{% endif %}
 
@@ -90,7 +94,7 @@
 
 {% if publication.doi %}<a id="publication_links" class="link" rel="external" href="http://dx.doi.org/{{ publication.doi }}">DOI</a>,{% endif %}
 
-<a id="publication_links" class="link" href="http://scholar.google.com/scholar?q={{ publication.title }} {% for author, author_escaped in publication.authors_escaped %} {% if forloop.first %}author:'{{ author_escaped }}'{% endif %} {% endfor %}">Google Scholar</a> 
+<a id="publication_links" class="link" href="http://scholar.google.com/scholar?q={{ publication.title }} {% for author, author_escaped in publication.authors_escaped %} {% if forloop.first %}author:'{{ author_escaped }}'{% endif %} {% endfor %}">Google Scholar</a>
 
 <!-- {% for author, author_escaped in publication.authors_escaped %} {% if forloop.first %}author:{{ author_escaped }}{% endif %} {% endfor %} -->
 
