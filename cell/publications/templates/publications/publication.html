@@ -3,13 +3,12 @@
 	
 	<div class="row">
 	
-        {% if publication.image %}
+        {% if publication.image and thumbnail %}
         {% load imagekit %}
     
         <div class="span2">
         {% thumbnail '200x200' publication.image -- class="img-rounded pull-left" %}</div>
-      
-      
+
         {% endif %}
 		
 	<div class="span9">
@@ -68,9 +67,10 @@
 
 {% if publication.abstract %} <a id="publication_links" class="show_hide{{publication.id}}" style="display: inline; ">Abstract</a>,{% endif %}
 
-<a id="publication_links" class="show_hide_two{{publication.id}}" style="display: inline; ">Bibtex</a>,  
+<a id="publication_links" class="show_hide_two{{publication.id}}" style="display: inline; ">Bibtex</a>,
 
-<a id="publication_links" href="/publications/{{publication.id}}/?ascii" style="display: inline; ">PlainText</a>,  
+<a id="publication_links" class="show_hide_three{{publication.id}}" style="display: inline; ">PlainText</a>,
+
 
 
 
@@ -110,8 +110,16 @@
 
 <div class="slidingDiv_two{{publication.id}}" style="display: none; ">
 <pre lang="bibtex">{% include "publications/publication.bib" %}</pre>
+
 </div>
 
+{% if publication.abstract %}
+
+<div class="slidingDiv_three{{publication.id}}" style="display: none; ">
+<pre lang="bibtex">{% include "publications/publication.txt" %}</pre>
+</div>
+
+{% endif %}
 
 
 </div> </div>

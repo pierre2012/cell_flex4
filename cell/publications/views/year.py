@@ -12,7 +12,7 @@ def year(request, year=None):
 		publications = Publication.objects.filter(year=year, external=False)
 	else:
 		publications = Publication.objects.filter(external=False)
-	publications = publications.order_by('-year', '-month', '-paper_number', '-id')
+	publications = publications.order_by('-year', '-paper_number','-month', '-id')
 
 	for publication in publications:
 		if publication.type.hidden:
@@ -22,7 +22,7 @@ def year(request, year=None):
 		years[-1][1].append(publication)
 
 	if 'ascii' in request.GET:
-		return render_to_response('publications/publications.txt', {
+		return render_to_response('publications/publication.txt', {
 				'publications': sum([y[1] for y in years], [])
 			}, context_instance=RequestContext(request), mimetype='text/plain; charset=UTF-8')
 

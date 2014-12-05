@@ -9,6 +9,7 @@ from contact import views
 from people import views
 # from papers import views
 
+import settings
 
 urlpatterns = patterns('',
     # Examples:
@@ -114,4 +115,10 @@ urlpatterns += patterns('software_form',
     (r'^download/thankyou', 'views.thankyou'),
     
 )
+
+urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$',
+            'django.views.static.serve',
+            {'document_root': settings.MEDIA_ROOT, }),
+    )
 

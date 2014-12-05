@@ -11,7 +11,7 @@ from publications.models import Type
 class Publication(models.Model):
 	class Meta:
 		app_label = 'publications'
-		ordering = ['-year', '-month', '-id']
+		ordering = ['-paper_number', '-year', '-month', '-id']
 
 	# names shown in admin area
 	MONTH_CHOICES = (
@@ -67,9 +67,9 @@ class Publication(models.Model):
 	note = models.CharField(max_length=256, blank=True)
 	keywords = models.CharField(max_length=256, blank=True,
 		help_text='List of keywords separated by commas.')
-	url = models.URLField(blank=True, verify_exists=False, verbose_name='URL',
+	url = models.URLField(blank=True,  verbose_name='URL',
 		help_text='Link to PDF or journal page.')
-	code = models.URLField(blank=True, verify_exists=False,
+	code = models.URLField(blank=True,
 		help_text='Link to page with code.')
 	pdf = models.FileField(upload_to='publications/', verbose_name='PDF', blank=True, null=True)
 	doi = models.CharField(max_length=128, verbose_name='DOI', blank=True)
@@ -190,6 +190,7 @@ class Publication(models.Model):
 		char = ord('a')
 
 		# augment character for every publication 'before' this publication
+
 		for publication in publications:
 			if publication == self:
 				break

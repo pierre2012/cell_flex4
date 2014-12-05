@@ -7,7 +7,7 @@ from django.template import RequestContext
 from publications.models import Type, Publication
 
 def id(request, publication_id):
-	publications = Publication.objects.filter(pk=publication_id)
+	publications = Publication.objects.filter(pk=publication_id).order_by('-paper_number')
 
 	if 'ascii' in request.GET:
 		return render_to_response('publications/publications.txt', {

@@ -1,5 +1,5 @@
 # Django settings for cell project.
-
+import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -14,8 +14,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'openscholar',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'openscholar',
-        'PASSWORD': '3UcPFH7tzvDT5f8m',
+        'USER': 'root',
+        'PASSWORD': '',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
@@ -50,22 +50,22 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/usr/mvl1/sbkthf/django_cell/media'
+MEDIA_ROOT = '/Users/master/PycharmProjects/cell.missouri.edu/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = 'http://cell.missouri.edu/media/'
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/usr/mvl1/sbkthf/django_cell/media/static'
+STATIC_ROOT = '/Users/master/PycharmProjects/cell.missouri.edu/'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = 'http://cell.missouri.edu/media/static/'
+STATIC_URL = '/static/'
 
 #ADMIN_MEDIA_PREFIX = 'http://cell.missouri.edu/media/static/admin/'
 
@@ -75,6 +75,9 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '/Users/master/PycharmProjects/cell.missouri.edu/media',
+    '/Users/master/PycharmProjects/cell.missouri.edu/media/static',
+
 )
 
 # List of finder classes that know how to find static files in
@@ -110,11 +113,13 @@ ROOT_URLCONF = 'cell.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'cell.wsgi.application'
 
+
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/usr/mvl1/sbkthf/django_cell/cell/templates/'
+    '/Users/master/PycharmProjects/cell.missouri.edu/cell/templates',
+
 )
 
 INSTALLED_APPS = (
